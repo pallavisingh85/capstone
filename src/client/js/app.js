@@ -12,13 +12,17 @@ function performAction(e){
     console.log("performAction");
     const location =  document.getElementById('zip').value;
     const dt = new Date(document.getElementById('dt').value);
+    const enddt = new Date(document.getElementById('enddt').value);
+    console.log(enddt)
+    const difference = enddt.getTime() - dt.getTime();
+    const days = difference / (1000 * 3600 * 24);
+    console.log("days "+days)
 
     getLatLng(location)
     .then(function(data){
             console.log(data.address.lat);
             console.log(data.address.lng);
             let time = null;
-            const diff = (dt.getTime() - today.getTime());
             if(dateDiff(dt, today) > 7) {
                 console.log('greater than seven');
                 time = dt.getTime();
@@ -27,14 +31,14 @@ function performAction(e){
             getWeather(data.address.lat, data.address.lng, time)
             .then(function(data1){
                 console.log(data1.currently.summary);
-                updateUI(data1.currently.summary, location, dt, false);
+                updateUI(data1.currently.summary, location, dt, days, false);
             })
         });
 
     getImage(location)
     .then(function(data2){
         console.log(data2);
-        updateUI(false, false, false, data2);
+        updateUI(false, false, false, false, data2);
     });
 }
 
@@ -84,7 +88,7 @@ const dateDiff = function ( date1, date2 ) {
       return Math.round(difference_ms/day);
     }
 
-function updateUI(weather, location, dt, imageUrl){
+function updateUI(weather, location, dt, days, imageUrl){
     if (imageUrl) {
         document.getElementById('tripImg').setAttribute("src", imageUrl.hits[0].previewURL);
         return;
@@ -92,6 +96,7 @@ function updateUI(weather, location, dt, imageUrl){
     document.getElementById('loc').innerHTML = location;
     const formattedDate = dt.getDate()+'/'+dt.getMonth()+'/'+dt.getYear();
     document.getElementById('date').innerHTML = formattedDate;
+    document.getElementById('days').innerHTML = days;
     document.getElementById('weatherInfo').innerHTML = weather;
 }
 
