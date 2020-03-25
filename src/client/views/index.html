@@ -7,25 +7,46 @@
  <body>
 <div id = "app">
   <div class ="holder headline">
-    Weather Journal App
+    My Travel App
   </div>
   <div class ="holder zip">
-    <label for="zip">Enter location here</label>
-    <input type="text" id="zip" placeholder="enter location here">
+      <label for="zip">Travel Destination</label>
+      <input type="text" id="zip" placeholder="Enter location here">
+      <label for="dt">Trip Start Date</label>
+      <input type="date" id="dt">
+      <label for="dt">Trip End Date</label>
+      <input type="date" id="enddt">
   </div>
   <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
+    <button id="generate" type = "submit"> Submit </button>
   </div>
+
   <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
+    <div class="output">
+        <h2>Trip Planner</h2>
+        <div class="card">
+            <div class="card-image">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" id="tripImg" />
+            </div>
+            <div class="card-data">
+                <h4>My trip to <span id="loc"></span></h4>
+                <h4>Departing: <span id="date"></span></h4>
+                <p>Typical weather for then is:</p>
+                <span id="weatherInfo"></span>
+            </div>
+        </div>
+    </div>
+
   </div>
   </div>
-  </div>
+<script>
+           // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+            }
+ </script>
 </body>
 </html>

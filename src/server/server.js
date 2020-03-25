@@ -1,6 +1,3 @@
-// Setup empty JS object to act as endpoint for all routes
-projectData = {};
-
 // Require Express to run server and routes
 const express = require('express');
 
@@ -33,33 +30,7 @@ app.get('/', function (req, res) {
     res.sendFile('./dist/index.html')
 })
 
-//GET Route
-app.get('/getAll', sendData);
-function sendData(request, response){
-    const location = request.query.location
-    const latLng = getLatLng(location);
-     const life = getWeather(latLng);
-    response.send(life);
-}
-
-function getLatLng(location){
-  const latLng = { lat:"171", lng:"243" } ;
-  return latLng;
-}
-
-function getWeather(latLng){
-  const life = {hi : "this too shall pass"};
-  return life;
-}
-
-//POST Route
-/*app.post('/setWeather', postData);
-function postData(request, response){
-    console.log('post request setWeather');
-    let data = request.body;
-    console.log(data);
-    projectData["temperature"] = data.main.temp;
-    projectData["date"] = data.date;
-    projectData["userResponse"] = data.userResponse;
-    response.send('POST received')
-}*/
+app.get('/test', function (req, res) {
+    console.log('inside tes!')
+    res.send(mockAPIResponse)
+})
