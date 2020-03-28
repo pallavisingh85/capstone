@@ -1,5 +1,7 @@
 // Require Express to run server and routes
+var path = require('path')
 const express = require('express');
+const mockAPIResponse = require('./mockAPI.js')
 
 // Start up an instance of app
 const app = express();
@@ -24,13 +26,3 @@ const server = app.listen(port, listening);
 function listening(){
     console.log(`running  hard on ${port}`);
 }
-
-app.get('/', function (req, res) {
-    console.log('hi!')
-    res.sendFile('./dist/index.html')
-})
-
-app.get('/test', function (req, res) {
-    console.log('inside tes!')
-    res.send(mockAPIResponse)
-})
