@@ -5,12 +5,14 @@ const darkskyURL = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/
 const url = 'http://localhost:8000/getAll?location=';
 const pixelBayKey = '15730671-f4cd55786c82f5c3ccbe92579';
 const pixelBay = 'https://pixabay.com/api?key=15730671-f4cd55786c82f5c3ccbe92579&q='
+
 // Create a new date instance dynamically with JS
 let today = new Date();
 
+// Take location, trip start and End date as input and update weather, image and trip duration on UI
 function performAction(e){
     console.log("performAction");
-    const location =  document.getElementById('zip').value;
+    const location =  document.getElementById('location').value;
     const dt = new Date(document.getElementById('dt').value);
     const enddt = new Date(document.getElementById('enddt').value);
     console.log(enddt)
