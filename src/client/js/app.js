@@ -4,7 +4,7 @@ const geonameURL = 'http://api.geonames.org/geoCodeAddressJSON?q=';
 const darkskyURL = 'https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/2ebab29b8f4864e4b6f0527e3a46ff73/';
 const url = 'http://localhost:8000/getAll?location=';
 const pixelBayKey = '15730671-f4cd55786c82f5c3ccbe92579';
-const pixelBay = 'https://pixabay.com/api?key=15730671-f4cd55786c82f5c3ccbe92579&q='
+const pixelBay = 'https://cors-anywhere.herokuapp.com/https://pixabay.com/api?key=15730671-f4cd55786c82f5c3ccbe92579&q='
 
 // Create a new date instance dynamically with JS
 let today = new Date();
